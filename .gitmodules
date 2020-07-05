@@ -1,0 +1,3 @@
+[submodule "Luminate"]
+	path = Luminate
+	url = git@github.com:Cusatelli/Luminate.git
