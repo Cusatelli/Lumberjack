@@ -4,14 +4,14 @@
  * license: MIT License
  */
 #include "Lumberjack.h"
-#include <Color.h>
+#include "Luminate.h"
 
 /*
  * Log in console using the default colors.
  */
 void Lumberjack::Log(std::string str)
 {
-	std::cout << "\033[0m" << str << "\033[0m" << std::endl;
+	std::cout << COLOR::Default() << str << ResetColor() << std::endl;
 }
 
 /*
@@ -34,15 +34,15 @@ std::string Lumberjack::GetColor(SEVERITY severity_level)
 	switch (severity_level)
 	{
 	case SEVERITY::ERROR:
-		return "\033[1m\033[31m";
+		return COLOR::Bright_Red(); //"\033[1m\033[31m";
 	case SEVERITY::CRITICAL:
-		return "\033[31m";
+		return COLOR::Red(); //"\033[31m";
 	case SEVERITY::WARNING:
-		return "\033[33m";
+		return COLOR::Yellow(); //"\033[33m";
 	case SEVERITY::INFO:
-		return "\033[37m";
+		return COLOR::Bright_White(); //"\033[37m";
 	default:
-		return "\033[0m";
+		return COLOR::Default(); //"\033[0m";
 	}
 }
 
@@ -73,5 +73,5 @@ std::string Lumberjack::GetSeverityPrefix(SEVERITY severity_level)
  */
 std::string Lumberjack::ResetColor()
 {
-	return "\033[0m";
+	return COLOR::Reset();
 }
