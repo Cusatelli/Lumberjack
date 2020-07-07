@@ -4,6 +4,7 @@
  * license: MIT License
  */
 #include "Lumberjack.h"
+#include <Color.h>
 
 /*
  * Log in console using the default colors.

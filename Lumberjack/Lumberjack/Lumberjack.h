@@ -6,6 +6,7 @@
 #pragma once
 
 #include "Severity/Severity.h"
+#include <iostream>
 
 #define SEVERITY Severity::Level // Quality of life definition.
 
