@@ -1,8 +1,13 @@
+/*
+ * author: Cusatelli
+ * source: https://github.com/Cusatelli/Luminate
+ * license: MIT License
+ */
 #pragma once
 
 #include "Severity/Severity.h"
 
-#define SEVERITY Severity::Level
+#define SEVERITY Severity::Level // Quality of life definition.
 
 class Lumberjack
 {
