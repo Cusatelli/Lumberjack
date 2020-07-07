@@ -141,10 +141,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Lumberjack\Lumberjack.h" />
+    <ClInclude Include="Lumberjack\Severity\Severity.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Lumberjack\Lumberjack.cpp" />
-    <ClCompile Include="Lumberjack\Testcpp.cpp" />
+    <ClCompile Include="Lumberjack\Severity\Severity.cpp" />
+    <ClCompile Include="Lumberjack\Test\Test.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

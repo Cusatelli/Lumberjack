@@ -1,47 +1,33 @@
 #include "Lumberjack.h"
 
-namespace Lumberjack
+void Lumberjack::Log(std::string str)
 {
-	/* PUBLIC */
-	void Debug::Warning(std::string message)
-	{
-		std::cout << YELLOW << message << RESET << std::endl;
-	}
+	std::cout << "\033[0m" << str << "\033[0m" << std::endl;
+}
 
-	void Debug::Log(std::string str)
-	{
-		print(str, DEFAULT, true);
-	}
+void Lumberjack::Log(SEVERITY severity_level, std::string str)
+{
+	std::cout << GetColor(severity_level) << Severity::GetSeverityPrefix(severity_level) << str << ResetColor() << std::endl;
+}
 
-	void Debug::Log(std::string str, std::string color)
+std::string Lumberjack::GetColor(SEVERITY severity_level)
+{
+	switch (severity_level)
 	{
-		print(str, color, true);
+	case SEVERITY::ERROR:
+		return "\033[1m\033[31m";
+	case SEVERITY::CRITICAL:
+		return "\033[31m";
+	case SEVERITY::WARNING:
+		return "\033[33m";
+	case SEVERITY::INFO:
+		return "\033[37m";
+	default:
+		return "\033[0m";
 	}
+}
 
-	void Debug::Log(std::string str, std::string color, bool endline)
-	{
-		print(str, color, endline);
-	}
-
-	void Debug::Message(std::string str, int value)
-	{
-		printf(str.c_str(), value);
-		std::cout << std::endl;
-	}
-
-	void Debug::Message(std::string str, float value)
-	{
-		printf(str.c_str(), value);
-		std::cout << std::endl;
-	}
-
-	/* PRIVATE */
-	void Debug::print(std::string str, std::string color, bool endline)
-	{
-		std::cout << color << str << RESET;
-		if (endline)
-		{
-			std::cout << std::endl;
-		}
-	}
+std::string Lumberjack::ResetColor()
+{
+	return "\033[0m";
 }

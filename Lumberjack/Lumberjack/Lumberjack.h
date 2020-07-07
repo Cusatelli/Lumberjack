@@ -1,27 +1,16 @@
 #pragma once
 
-#include <iostream>
+#include "Severity/Severity.h"
 
-#include "Colors.h"
+#define SEVERITY Severity::Level
 
-#define DEFAULT RESET
-
-namespace Lumberjack
+class Lumberjack
 {
-	template<class ...Debug> void Test(Debug ... args);
+public:
+	void Log(std::string str);
+	void Log(SEVERITY severity_level, std::string str);
 
-	class Debug
-	{
-	public:
-		void Warning(std::string message);
-		void Log(std::string str);
-		void Log(std::string str, std::string color);
-		void Log(std::string str, std::string color, bool endline);
-
-		void Message(std::string str, int value);
-		void Message(std::string str, float value);
-
-	private:
-		void print(std::string str, std::string color, bool endline);
-	};
-}
+private:
+	std::string GetColor(SEVERITY severity_level);
+	std::string ResetColor();
+};
