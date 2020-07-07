@@ -20,7 +20,7 @@ void Lumberjack::Log(std::string str)
  */
 void Lumberjack::Log(SEVERITY severity_level, std::string str)
 {
-	std::cout << GetColor(severity_level) << Severity::GetSeverityPrefix(severity_level) << str << ResetColor() << std::endl;
+	std::cout << GetColor(severity_level) << GetSeverityPrefix(severity_level) << str << ResetColor() << std::endl;
 }
 
 /*
@@ -42,6 +42,27 @@ std::string Lumberjack::GetColor(SEVERITY severity_level)
 		return "\033[37m";
 	default:
 		return "\033[0m";
+	}
+}
+
+/*
+ * Get the prefix for logging in console. I.E when logging a message of Warning
+ * Print [ WARNING ]: before the rest of the message.
+ */
+std::string Lumberjack::GetSeverityPrefix(SEVERITY severity_level)
+{
+	switch (severity_level)
+	{
+	case SEVERITY::ERROR:
+		return "[   ERROR   ]: ";
+	case SEVERITY::CRITICAL:
+		return "[  CRITICAL ]: ";
+	case SEVERITY::WARNING:
+		return "[  WARNING  ]: ";
+	case SEVERITY::INFO:
+		return "[    INFO   ]: ";
+	default:
+		return "";
 	}
 }
 

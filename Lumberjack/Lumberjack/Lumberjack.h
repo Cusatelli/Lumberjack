@@ -18,4 +18,6 @@ public:
 private:
 	std::string GetColor(SEVERITY severity_level);
 	std::string ResetColor();
+	// Was in Severity.h/.cpp, workaround too keep it private was to put it here instead:
+	static std::string GetSeverityPrefix(SEVERITY severity_level);
 };
